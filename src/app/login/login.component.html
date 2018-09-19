@@ -1,19 +1,19 @@
 <div class="container">
-  <div [hidden]="loggindIn">
+  <div [hidden]="loggedIn">
     <mat-grid-list [cols]="6" [style.margin-top]="'20px'">
-      <mat-grid-tile [colspan]="1"></mat-grid-tile>
-      <mat-grid-tile [colspan]="4">
+      <mat-grid-list [cols]="1"></mat-grid-list>
+      <mat-grid-list [cols]="4">
         <form (ngSubmit)="onSubmit()">
           <mat-form-field class="full-width">
-            <input type="text" matInput placeholder="Your Username" id="username" />
+            <input type="text" matInput id="username" name="username" placeholder="Your Username" [(ngModel)]="credential.username" />
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input type="password" matInput placeholder="Your Password" id="password" />
+            <input type="password" matInput id="pwd" name="password" placeholder="Your Password" [(ngModel)]="credential.password" />
           </mat-form-field>
-
-          <button mat-raised-button type="submit" class="mat-primary">Login</button>
+          <button mat-raised-button type="submit" class="mat-primary">LogIn</button>
         </form>
-      </mat-grid-tile>
+      </mat-grid-list>
     </mat-grid-list>
   </div>
+  <div [hidden]="!loggedIn"><h2>You have logged In !</h2></div>
 </div>

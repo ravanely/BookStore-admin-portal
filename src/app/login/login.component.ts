@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../../services/login.service';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,27 +9,24 @@ import {LoginService} from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  private credential = {username : '', password : ''};
-  private loggindIn = false;
+  private credential = {'username': '', 'password' : ''};
+  private loggedIn = false;
 
   constructor(private loginService: LoginService) { }
 
-  onSubmit(){
+  onSubmit() {
     this.loginService.sendCredential(this.credential.username, this.credential.password).subscribe(
       res => {
         console.log(res);
-        //localStorage.setItem('xAuthToken', res.json().token);
-       // localStorage.setItem("xAuthToken", res.json().token);
-        this.loggindIn = true;
+        localStorage.setItem('xAuthToken', res.toString());
+        this.loggedIn = true;
         //location.reload();
       },
       error => {
         console.log(error);
-      }
-    );
+      });
   }
 
   ngOnInit() {
   }
-
 }

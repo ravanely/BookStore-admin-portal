@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import {LoginService} from '../services/login.service';
 import {HttpClientModule} from '@angular/common/http';
 import {routing} from './app.routing';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import {routing} from './app.routing';
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     HttpClientModule,
     MatGridListModule,
